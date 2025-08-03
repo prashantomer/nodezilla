@@ -1,4 +1,4 @@
-# node_oms_app
+# Nodezilla
 
 Order Management System (OMS) application built with Node.js.
 
@@ -11,14 +11,14 @@ Order Management System (OMS) application built with Node.js.
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14+ recommended)
+- [Node.js](https://nodejs.org/) (v18.15.0 recommended)
 - [npm](https://www.npmjs.com/)
 
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/node_oms_app.git
-cd node_oms_app
+git clone https://github.com/yourusername/nodezilla.git
+cd nodezilla
 npm install
 ```
 
@@ -40,14 +40,40 @@ The API will be available at `http://localhost:3000`.
 - `PUT /orders/:id` — Update order
 - `DELETE /orders/:id` — Delete order
 
-## Project Structure
-
+### Sequelize Commands
 ```
-myNodeApp/
-├── src/
-│   └── ... (source files)
-├── package.json
-└── README.md
+Generate Models:
+  npx sequelize-cli model:generate --name User --attributes first_name:string,last_name:string,email:string,gender:string,ip_address:string,active:boolean
+
+  npm run generate:model -- --name Product --attributes "product_name:string,product_category:string,cost_price:decimal,description:string,quantity:integer,reserved:integer,isku:string,active:boolean"
+
+Generate Migration:
+  npx sequelize-cli migration:generate --name add-username-to-users
+
+Migrate:
+  npm run migrate
+  OR
+  npx sequelize-cli db:migrate
+
+Undo Migration:
+  npm run migrate:undo
+  OR
+  npx sequelize-cli db:migrate:undo
+
+Generate Seed:
+  npx sequelize-cli seed:generate --name demo-users
+
+Run Seed:
+  npx sequelize-cli db:seed:all
+  OR
+  npx sequelize-cli db:seed:run
+
+Rollback Seed:
+  npx sequelize-cli db:seed:undo
+  OR
+  npx sequelize-cli db:seed:undo --seed <seed_file_name>
+  OR
+  npx sequelize-cli db:seed:undo:all
 ```
 
 ## Contributing
