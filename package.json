@@ -1,0 +1,38 @@
+{
+  "name": "omsapp",
+  "version": "1.0.0",
+  "description": "OMS application build in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "rollback": "npx sequelize-cli db:migrate:undo",
+    "generate:model": "npx sequelize-cli model:generate --name $NAME --attributes $ATTRIBUTES",
+    "generate:migration": "npx sequelize-cli migration:generate --name $NAME"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantomer/node_oms_app.git"
+  },
+  "keywords": [
+    "oms"
+  ],
+  "author": "Prashant omer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prashantomer/node_oms_app/issues"
+  },
+  "homepage": "https://github.com/prashantomer/node_oms_app#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.14.2",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
+  }
+}

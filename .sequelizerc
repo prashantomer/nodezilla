@@ -1,0 +1,47 @@
+const path = require('path');
+
+module.exports = {
+  config: path.resolve('configs', 'sequelizeConfig.js'),
+  modelsPath: path.resolve('app', 'models'),
+  seedersPath: path.resolve('db', 'seeds'),
+  migrationsPath: path.resolve('db', 'migrations')
+};
+
+/*
+Generate Models:
+  npx sequelize-cli model:generate --name User --attributes first_name:string,last_name:string,email:string,gender:string,ip_address:string,active:boolean
+
+  npm run generate:model -- --name Product --attributes "product_name:string,product_category:string,cost_price:decimal,description:string,quantity:integer,reserved:integer,isku:string,active:boolean"
+
+Generate Migration:
+  npx sequelize-cli migration:generate --name add-username-to-users
+
+Migrate:
+  npm run migrate
+  OR
+  npx sequelize-cli db:migrate
+
+Undo Migration:
+  npm run migrate:undo
+  OR
+  npx sequelize-cli db:migrate:undo
+
+Generate Seed:
+  npx sequelize-cli seed:generate --name demo-users
+
+Run Seed:
+  npx sequelize-cli db:seed:all
+  OR
+  npx sequelize-cli db:seed:run
+
+Rollback Seed:
+  npx sequelize-cli db:seed:undo
+  OR
+  npx sequelize-cli db:seed:undo --seed <seed_file_name>
+  OR
+  npx sequelize-cli db:seed:undo:all
+
+*/
+
+// To make `id` auto-incremental starting from 1, you don't need to specify `id` in the attributes.
+// Sequelize will automatically create an `id` field as an auto-incrementing primary key.
