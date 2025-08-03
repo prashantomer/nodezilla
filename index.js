@@ -6,6 +6,18 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// create log folder and production.log file if they don't exist using fs
+const fs = require('fs');
+const path = require('path');
+const logDir = path.join(__dirname, 'logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
+const logFile = path.join(logDir, `${process.env.NODE_ENV || "development"}` + '.log');
+if (!fs.existsSync(logFile)) {
+  fs.writeFileSync(logFile, '', { flag: 'w' });
+}
+
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
 // Middleware to serve static files (if needed)
